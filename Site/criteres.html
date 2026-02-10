@@ -18,12 +18,13 @@
             </ul>
         </section>
 
-        <nav>
-            <a href="index.html" class="btn">← Retour à l’accueil</a>
-        </nav>
+        
     </main>
 
     <footer>
+        <div class="bottom-button">
+            <a href="index.html" class="btn">← Retour à l’accueil</a>
+        </div>
         <p>© CFCIA – Centre Français de Confiance en Intelligence Artificielle</p>
         <img src="logo.png" alt="Logo CFCIA">
     </footer>
@@ -31,15 +32,6 @@
     <script src="script.js"></script>
     <script>
         // Remplir la liste complète des critères pour affichage
-        async function fillCriteriaList() {
-            if (criteriaMap.length === 0) await loadCriteria();
-            const ul = document.getElementById("criteriaFullList");
-            criteriaMap.forEach(crit => {
-                const li = document.createElement("li");
-                li.textContent = crit;
-                ul.appendChild(li);
-            });
-        }
         fillCriteriaList();
     </script>
 </body>

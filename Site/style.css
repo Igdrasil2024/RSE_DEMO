@@ -104,3 +104,23 @@ footer img {
     margin-top: 10px;
     max-height: 50px;
 }
+
+
+.bottom-button {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.bottom-button .btn {
+    background-color: #0073e6;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.bottom-button .btn:hover {
+    background-color: #005bb5;
+}

@@ -6,7 +6,7 @@ let siteDatabase = {}; // Base des sites et critères
 // --------------------------
 async function loadCriteria() {
     try {
-        const response = await fetch("criteres.txt");
+        const response = await fetch('criteria.txt');
         if (!response.ok) throw new Error("Impossible de charger le fichier criteres.txt");
 
         const text = await response.text();
@@ -116,6 +116,4 @@ function fillCriteriaList() {
 // --------------------------
 // Initialisation
 // --------------------------
-document.addEventListener("DOMContentLoaded", () => {
-    loadCriteria();
-});
+document.addEventListener("DOMContentLoaded", loadCriteria);
