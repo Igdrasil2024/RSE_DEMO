@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Label IA Responsable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Label IA Responsable</h1>
+        <p>Transparence et protection des données pour les utilisateurs</p>
+    </header>
+
+    <main>
+        <section class="search-box">
+            <h2>Évaluer un site web</h2>
+            <input type="text" id="searchInput" placeholder="Nom de l’entreprise ou URL">
+            <button onclick="searchSite()">Rechercher</button>
+        </section>
+
+        <section id="result" class="result hidden">
+            <h3 id="siteName"></h3>
+            <div class="score">
+                <span id="scoreValue"></span>
+                <span id="scoreLabel"></span>
+            </div>
+            <a href="#" class="details-link">Voir le détail</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>© CFCIA – Centre Français de Confiance en Intelligence Artificielle</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
