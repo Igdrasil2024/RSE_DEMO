@@ -2,12 +2,12 @@ let criteriaMap = []; // Liste des critères
 let siteDatabase = {}; // Base des sites et critères
 
 // --------------------------
-// Charger les critères depuis criteres.txt
+// Charger les critères depuis criteria.txt
 // --------------------------
 async function loadCriteria() {
     try {
         const response = await fetch('criteria.txt');
-        if (!response.ok) throw new Error("Impossible de charger le fichier criteres.txt");
+        if (!response.ok) throw new Error("Impossible de charger le fichier criteria.txt");
 
         const text = await response.text();
         const lines = text.split("\n").map(l => l.trim()).filter(l => l.length > 0);
@@ -22,6 +22,7 @@ async function loadCriteria() {
 
 // --------------------------
 // Charger la base des sites depuis sites.txt
+// Format : lien;nom;score;crit1,crit2,...
 // --------------------------
 async function loadSites() {
     try {
@@ -35,8 +36,9 @@ async function loadSites() {
             const parts = line.split(";");
             const url = parts[0];
             const name = parts[1];
-            const criteriaFlags = parts.slice(2).map(s => s.trim() === "true");
-            siteDatabase[url] = {name, criteriaFlags};
+            const score = parseFloat(parts[2]); // score float
+            const criteriaFlags = parts[3].split(",").map(s => s.trim() === "true" || s.trim() === "1");
+            siteDatabase[url] = {name, criteriaFlags, score};
         });
     } catch (err) {
         console.error("Erreur chargement sites :", err);
@@ -44,17 +46,16 @@ async function loadSites() {
 }
 
 // --------------------------
-// Calcul du score
+// Obtenir label de score
 // --------------------------
-function calculateScore(selectedCriteria) {
-    let score = 10 - selectedCriteria.filter(c => c).length;
+function getScoreLabel(score) {
     let label = "";
     let colorClass = "";
 
-    if (score >= 8) {
+    if (score >= 8.0) {
         label = "🟢 Faible invasivité";
         colorClass = "green";
-    } else if (score >= 5) {
+    } else if (score >= 5.0) {
         label = "🟠 Transparence moyenne";
         colorClass = "orange";
     } else {
@@ -62,33 +63,42 @@ function calculateScore(selectedCriteria) {
         colorClass = "red";
     }
 
-    return {score, label, colorClass};
+    return {label, colorClass};
 }
 
 // --------------------------
 // Recherche d'un site
 // --------------------------
 function searchSite() {
-    const input = document.getElementById("searchInput").value.trim();
+    const input = document.getElementById("searchInput").value.trim().toLowerCase();
     if (!input) return alert("Veuillez entrer un nom de site ou URL");
 
-    let siteData = siteDatabase[input];
+    let siteData = null;
+    let siteKey = null;
+    for (const key in siteDatabase) {
+        const data = siteDatabase[key];
+        if (key.toLowerCase() === input || data.name.toLowerCase() === input) {
+            siteData = data;
+            siteKey = key;
+            break;
+        }
+    }
+
     if (!siteData) return alert("Site non trouvé dans la base");
 
-    const selectedCriteria = siteData.criteriaFlags;
-    const result = calculateScore(selectedCriteria);
-
     const resultSection = document.getElementById("result");
-    document.getElementById("siteName").textContent = siteData.name + " (" + input + ")";
-    document.getElementById("scoreValue").textContent = result.score + "/10";
+    document.getElementById("siteName").textContent = siteData.name + " (" + siteKey + ")";
+    document.getElementById("scoreValue").textContent = siteData.score.toFixed(1) + "/10"; // float avec 1 décimale
+
+    const scoreInfo = getScoreLabel(siteData.score);
     const scoreLabel = document.getElementById("scoreLabel");
-    scoreLabel.textContent = result.label;
-    scoreLabel.className = result.colorClass;
+    scoreLabel.textContent = scoreInfo.label;
+    scoreLabel.className = scoreInfo.colorClass;
 
     // Afficher les critères pénalisants
     const ul = document.getElementById("criteriaList");
     ul.innerHTML = "";
-    selectedCriteria.forEach((c, i) => {
+    siteData.criteriaFlags.forEach((c, i) => {
         if (c) {
             const li = document.createElement("li");
             li.textContent = criteriaMap[i];
