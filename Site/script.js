@@ -56,10 +56,10 @@ function getScoreLabel(score) {
         label = "🟢 CGU favorable pour l'utilisateur";
         colorClass = "green";
     } else if (score >= 3.1) {
-        label = "🟠 Niveau de CGU intermédiare";
+        label = "🟠 CGU déjà defavorable pour l'utilisateur";
         colorClass = "orange";
     } else {
-        label = "🔴 CGU defavorable pour l'utilisateur";
+        label = "🔴 CGU fortement defavorable pour l'utilisateur";
         colorClass = "red";
     }
 
