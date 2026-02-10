@@ -7,39 +7,38 @@
 </head>
 <body>
 
-<header>
-    <h1>Label IA Responsable</h1>
-    <p>Transparence et protection des données pour les utilisateurs</p>
-</header>
+    <header>
+        <h1>Label IA Responsable</h1>
+        <p>Transparence et protection des données pour les utilisateurs</p>
+    </header>
 
-<main>
-    <section class="search-box">
-        <h2>Evaluer un site web</h2>
-        <input type="text" id="searchInput" placeholder="Nom de l'entreprise ou URL">
-        <button class="btn" onclick="searchSite()">Rechercher</button>
-    </section>
+    <main>
+        <section class="search-box">
+            <h2>Évaluer un site web</h2>
+            <input type="text" id="searchInput" placeholder="Nom de l’entreprise ou URL">
+            <button onclick="searchSite()">Rechercher</button>
+        </section>
 
-    <section id="result" class="result hidden">
-        <h3 id="siteName"></h3>
+        <section id="result" class="result hidden">
+            <h3 id="siteName"></h3>
+            <div class="score">
+                <span id="scoreValue"></span>
+                <span id="scoreLabel"></span>
+            </div>
+            <h4>Critères pénalisants :</h4>
+            <ul id="criteriaList"></ul>
+        </section>
 
-        <div class="score">
-            <span id="scoreValue"></span>
-            <span id="scoreLabel"></span>
-        </div>
+        <nav>
+            <a href="criteres.html" class="btn">Voir les critères de notation</a>
+        </nav>
+    </main>
 
-        <a href="#" class="details-link btn-outline">Voir le détail</a>
-    </section>
+    <footer>
+        <p>© CFCIA – Centre Français de Confiance en Intelligence Artificielle</p>
+        <img src="logo.png" alt="Logo CFCIA">
+    </footer>
 
-    <nav class="nav-links">
-        <a href="criteres.html" class="btn-link">Voir les critères pénalisants</a>
-    </nav>
-</main>
-
-<footer>
-    <p>© CFCIA – Centre Français de Confiance en Intelligence Artificielle</p>
-    <img src="logo.png" alt="Logo CFCIA">
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

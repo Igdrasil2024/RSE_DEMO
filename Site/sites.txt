@@ -1,0 +1,3 @@
+https://www.google.com;Google;false,false,false,false,false
+https://www.facebook.com;Facebook;true,true,true,true,true
+https://www.amazon.com;Amazon;false,false,false,true,false

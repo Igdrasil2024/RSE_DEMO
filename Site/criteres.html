@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Critères pénalisants – Label IA Responsable</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Critères pénalisants – Label IA Responsable</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <h1>Critères pénalisants – Label IA Responsable</h1>
+    </header>
 
-<header>
-    <h1>Critères pénalisants</h1>
-    <p>Éléments impactant négativement le score IA Responsable</p>
-</header>
+    <main>
+        <section class="criteria-section">
+            <h2>Liste des critères</h2>
+            <ul id="criteriaFullList">
+                <!-- Les critères seront remplis par script.js ou statiquement -->
+            </ul>
+        </section>
 
-<main>
-    <section class="criteria-box">
-        <ul>
-            <li>Collecte excessive de données personnelles</li>
-            <li>Absence de chiffrement des données</li>
-            <li>Profilage psychométrique ou comportemental</li>
-            <li>Partage des données avec des tiers non justifiés</li>
-            <li>CGU opaques, floues ou contradictoires</li>
-        </ul>
-    </section>
+        <nav>
+            <a href="index.html" class="btn">← Retour à l’accueil</a>
+        </nav>
+    </main>
 
-    <nav class="nav-links">
-        <a href="index.html" class="btn-link">← Retour à l’accueil</a>
-    </nav>
-</main>
+    <footer>
+        <p>© CFCIA – Centre Français de Confiance en Intelligence Artificielle</p>
+        <img src="logo.png" alt="Logo CFCIA">
+    </footer>
 
-<footer>
-    <p>© CFCIA – Centre Français de Confiance en Intelligence Artificielle</p>
-    <img src="logo.png" alt="Logo CFCIA">
-</footer>
-
+    <script src="script.js"></script>
+    <script>
+        // Remplir la liste complète des critères pour affichage
+        async function fillCriteriaList() {
+            if (criteriaMap.length === 0) await loadCriteria();
+            const ul = document.getElementById("criteriaFullList");
+            criteriaMap.forEach(crit => {
+                const li = document.createElement("li");
+                li.textContent = crit;
+                ul.appendChild(li);
+            });
+        }
+        fillCriteriaList();
+    </script>
 </body>
 </html>
