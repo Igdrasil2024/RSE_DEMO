@@ -20,6 +20,7 @@
     <div class="alien-fog" aria-hidden="true"></div>
     <div class="emoji-fleet" aria-hidden="true">
       <span class="parallax-layer" data-depth="0.5">👽</span>
+      <span class="parallax-layer" data-depth="0.5"></span>
       <span class="parallax-layer" data-depth="0.9">🛸</span>
       <span class="parallax-layer" data-depth="0.7">👾</span>
       <span class="parallax-layer" data-depth="1.1">🛸</span>
@@ -51,7 +52,7 @@
 
     <main class="wrap">
       <header class="hero">
-        <p class="kicker">ANALYSE JURIDIQUE</p>
+        <p class="kicker">ANALYSE CGUFO</p>
         <div class="brand-line">
           <img
             class="site-logo"
@@ -135,6 +136,14 @@
         </section>
         -->
       </section>
+
+      <section class="panel cache-section">
+        <div class="cache-head">
+          <h2>Historique (cache)</h2>
+          <button id="refresh-cache" type="button" class="ghost-btn">Actualiser</button>
+        </div>
+        <div id="cache-list" class="cache-list"></div>
+      </section>
     </main>
 
     <script>
@@ -151,6 +160,8 @@
       // const rawEl = document.getElementById("raw");
       const gaugeEl = document.getElementById("gauge");
       const parallaxLayers = document.querySelectorAll(".parallax-layer");
+      const cacheListEl = document.getElementById("cache-list");
+      const refreshCacheBtn = document.getElementById("refresh-cache");
 
       function renderList(container, items) {
         container.innerHTML = "";
@@ -159,6 +170,124 @@
           li.textContent = item;
           container.appendChild(li);
         });
+      }
+
+      function renderCache(entries) {
+        if (!entries || entries.length === 0) {
+          cacheListEl.innerHTML = '<p class="small-note">Aucune entree en cache pour le moment.</p>';
+          return;
+        }
+
+        cacheListEl.innerHTML = "";
+        entries.forEach((entry) => {
+          const details = document.createElement("details");
+          details.className = "cache-item";
+
+          const summary = document.createElement("summary");
+          summary.className = "cache-summary";
+
+          const left = document.createElement("div");
+          left.className = "cache-left";
+          const link = document.createElement("a");
+          link.href = entry.input_url || "#";
+          link.target = "_blank";
+          link.rel = "noreferrer";
+          link.textContent = entry.input_url || entry.cache_key || "site";
+          left.appendChild(link);
+
+          const right = document.createElement("div");
+          right.className = "cache-right";
+          const score = document.createElement("span");
+          score.className = "cache-score";
+          score.textContent = `Score: ${entry.score}`;
+          right.appendChild(score);
+
+          summary.appendChild(left);
+          summary.appendChild(right);
+          details.appendChild(summary);
+
+          const data = entry.data || {};
+          const body = document.createElement("div");
+          body.className = "cache-body";
+
+          const meta = document.createElement("div");
+          meta.className = "cache-meta";
+          const type = document.createElement("span");
+          type.className = "cache-chip";
+          type.textContent = `Type: ${data.site_type || "hybride"}`;
+          const conf = document.createElement("span");
+          conf.className = "cache-chip";
+          conf.textContent = `Confiance: ${data.site_type_confidence ?? 50}%`;
+          const date = document.createElement("span");
+          date.className = "cache-chip subtle";
+          date.textContent = data.cached_at ? `Cache: ${data.cached_at}` : "Cache: n/a";
+          meta.appendChild(type);
+          meta.appendChild(conf);
+          meta.appendChild(date);
+          body.appendChild(meta);
+
+          const summaryText = document.createElement("p");
+          summaryText.className = "cache-summary-text";
+          summaryText.textContent = data.summary || "Aucun resume disponible.";
+          body.appendChild(summaryText);
+
+          const cols = document.createElement("div");
+          cols.className = "cache-columns";
+
+          const risksBlock = document.createElement("section");
+          risksBlock.className = "cache-block";
+          const risksTitle = document.createElement("h4");
+          risksTitle.textContent = "Risques";
+          risksBlock.appendChild(risksTitle);
+          const risksList = document.createElement("ul");
+          (data.risks || []).forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            risksList.appendChild(li);
+          });
+          if (!risksList.children.length) {
+            const li = document.createElement("li");
+            li.textContent = "Aucun risque liste.";
+            risksList.appendChild(li);
+          }
+          risksBlock.appendChild(risksList);
+
+          const highlightsBlock = document.createElement("section");
+          highlightsBlock.className = "cache-block";
+          const highlightsTitle = document.createElement("h4");
+          highlightsTitle.textContent = "Points favorables";
+          highlightsBlock.appendChild(highlightsTitle);
+          const highlightsList = document.createElement("ul");
+          (data.highlights || []).forEach((item) => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            highlightsList.appendChild(li);
+          });
+          if (!highlightsList.children.length) {
+            const li = document.createElement("li");
+            li.textContent = "Aucun point favorable liste.";
+            highlightsList.appendChild(li);
+          }
+          highlightsBlock.appendChild(highlightsList);
+
+          cols.appendChild(risksBlock);
+          cols.appendChild(highlightsBlock);
+          body.appendChild(cols);
+          details.appendChild(body);
+
+          cacheListEl.appendChild(details);
+        });
+      }
+
+      async function loadCache() {
+        try {
+          const response = await fetch("/cache");
+          const data = await response.json();
+          if (!data.ok) throw new Error(data.error || "Erreur cache");
+          renderCache(data.entries || []);
+        } catch (error) {
+          cacheListEl.innerHTML = `<p class="small-note">Erreur cache: ${error.message}</p>`;
+        }
       }
 
       form.addEventListener("submit", async (event) => {
@@ -202,10 +331,13 @@
           } else {
             statusEl.textContent = "Analyse terminee.";
           }
+          loadCache();
         } catch (error) {
           statusEl.textContent = `Erreur: ${error.message}`;
         }
       });
+
+      refreshCacheBtn.addEventListener("click", loadCache);
 
       let mx = 0;
       let my = 0;
@@ -242,6 +374,7 @@
       }
 
       requestAnimationFrame(animateParallax);
+      loadCache();
     </script>
   </body>
 </html>

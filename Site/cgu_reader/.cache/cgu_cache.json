@@ -39,29 +39,29 @@
       "https://amazon.fr/politique-cookies",
       "https://amazon.fr/mentions-legales"
     ],
-    "score": 65,
+    "score": 9,
     "site_type": "e-commerce",
     "site_type_confidence": 82,
-    "summary": "Amazon.fr pr\u00e9sente un cadre contractuel s\u00e9v\u00e8re (score 86/100) typique d'une marketplace. Points positifs : droit de r\u00e9tractation clair, historique des versions accessible, contacts support et m\u00e9diation identifi\u00e9s, portail de gestion des cookies d\u00e9taill\u00e9. Points n\u00e9gatifs : modifications unilat\u00e9rales possibles avec pr\u00e9avis court, d\u00e9lais de remboursement variables, preuves num\u00e9riques faisant foi, comp\u00e9tence juridictionnelle complexe, annulation pour suspicion de fraude.",
+    "summary": "Les politiques d'Amazon.fr pr\u00e9sentent un \u00e9quilibre mitig\u00e9. Bien que des droits utilisateurs comme le retrait de consentement et la m\u00e9diation soient clairement identifi\u00e9s, plusieurs clauses sont d\u00e9favorables : modifications unilat\u00e9rales avec pr\u00e9avis court, preuves num\u00e9riques faisant foi, d\u00e9lais de remboursement variables et annulation pour simple suspicion de fraude. Le cadre juridique diff\u00e8re selon le statut de l'utilisateur.",
     "risks": [
-      "Modification unilat\u00e9rale des CGU avec pr\u00e9avis court",
-      "D\u00e9lais de remboursement variables selon le moyen de paiement",
-      "Preuves num\u00e9riques et journaux serveurs faisant foi",
-      "Comp\u00e9tence juridictionnelle mixte et complexe selon le type d'utilisateur",
-      "Annulation de commande possible pour simple suspicion de fraude"
+      "Modification unilaterale des CGU avec preavis court",
+      "Preuves numeriques et journaux serveurs faisant foi",
+      "Delais de remboursement variables selon moyen de paiement",
+      "Annulation de commande possible pour simple suspicion de fraude",
+      "Competence juridictionnelle mixte selon type d'utilisateur"
     ],
     "highlights": [
-      "Droit de r\u00e9tractation clairement mentionn\u00e9 et encadr\u00e9",
-      "Historique des versions des conditions g\u00e9n\u00e9rales disponible publiquement",
-      "Contact support et proc\u00e9dures de m\u00e9diation consommation clairement identifi\u00e9s",
-      "Portail de gestion des consentements cookies d\u00e9taill\u00e9 et accessible",
-      "Clauses pr\u00e9sent\u00e9es de mani\u00e8re structur\u00e9e (bien que s\u00e9v\u00e8res)"
+      "Historique des versions des conditions disponible publiquement",
+      "Droit de retractation clairement mentionne",
+      "Contact support et mediation consommation clairement identifies",
+      "Portail de gestion des consentements cookies detaille",
+      "Clauses presentees de maniere structuree et accessible"
     ],
-    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://amazon.fr/conditions-generales\n- https://amazon.fr/politique-de-confidentialite\n- https://amazon.fr/politique-cookies\n- https://amazon.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: amazon.fr\nType de site estime: e-commerce (confiance 82/100, raison: indices domaine orientes vente en ligne)\nProfil de service estime: marketplace grand public\nIndice de severite contractuelle estime: 86/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies de personnalisation et recommandations produits.\n- Cadre legal: competence juridictionnelle mixte selon type d'utilisateur.\n- Clause: annulation de commande possible pour suspicion de fraude.\n- Clause: preuves numeriques et journaux serveurs faisant foi.\n- Clause: delais de remboursement variables selon moyen de paiement.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Point favorable: historique des versions des conditions disponible publiquement.\n- Point favorable: droit de retractation clairement mentionne.\n- Point favorable: contact support et mediation consommation clairement identifies.\n- Point favorable: portail de gestion des consentements cookies detaille.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
-    "raw_model_response": "```json\n{\n    \"score\": 65,\n    \"site_type\": \"e-commerce\",\n    \"site_type_confidence\": 82,\n    \"summary\": \"Amazon.fr pr\u00e9sente un cadre contractuel s\u00e9v\u00e8re (score 86/100) typique d'une marketplace. Points positifs : droit de r\u00e9tractation clair, historique des versions accessible, contacts support et m\u00e9diation identifi\u00e9s, portail de gestion des cookies d\u00e9taill\u00e9. Points n\u00e9gatifs : modifications unilat\u00e9rales possibles avec pr\u00e9avis court, d\u00e9lais de remboursement variables, preuves num\u00e9riques faisant foi, comp\u00e9tence juridictionnelle complexe, annulation pour suspicion de fraude.\",\n    \"risks\": [\"Modification unilat\u00e9rale des CGU avec pr\u00e9avis court\", \"D\u00e9lais de remboursement variables selon le moyen de paiement\", \"Preuves num\u00e9riques et journaux serveurs faisant foi\", \"Comp\u00e9tence juridictionnelle mixte et complexe selon le type d'utilisateur\", \"Annulation de commande possible pour simple suspicion de fraude\"],\n    \"highlights\": [\"Droit de r\u00e9tractation clairement mentionn\u00e9 et encadr\u00e9\", \"Historique des versions des conditions g\u00e9n\u00e9rales disponible publiquement\", \"Contact support et proc\u00e9dures de m\u00e9diation consommation clairement identifi\u00e9s\", \"Portail de gestion des consentements cookies d\u00e9taill\u00e9 et accessible\", \"Clauses pr\u00e9sent\u00e9es de mani\u00e8re structur\u00e9e (bien que s\u00e9v\u00e8res)\"]\n}\n```",
-    "cached_at": "2026-02-10T12:20:49.676393+00:00",
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://amazon.fr/conditions-generales\n- https://amazon.fr/politique-de-confidentialite\n- https://amazon.fr/politique-cookies\n- https://amazon.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: amazon.fr\nType de site estime: e-commerce (confiance 82/100, raison: indices domaine orientes vente en ligne)\nProfil de service estime: marketplace grand public\nIndice de severite contractuelle estime: 9/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies de personnalisation et recommandations produits.\n- Cadre legal: competence juridictionnelle mixte selon type d'utilisateur.\n- Clause: annulation de commande possible pour suspicion de fraude.\n- Clause: preuves numeriques et journaux serveurs faisant foi.\n- Clause: delais de remboursement variables selon moyen de paiement.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Point favorable: historique des versions des conditions disponible publiquement.\n- Point favorable: droit de retractation clairement mentionne.\n- Point favorable: contact support et mediation consommation clairement identifies.\n- Point favorable: portail de gestion des consentements cookies detaille.\n- Score cible interne estime: 9/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 9,\n    \"site_type\": \"e-commerce\",\n    \"site_type_confidence\": 82,\n    \"summary\": \"Les politiques d'Amazon.fr pr\u00e9sentent un \u00e9quilibre mitig\u00e9. Bien que des droits utilisateurs comme le retrait de consentement et la m\u00e9diation soient clairement identifi\u00e9s, plusieurs clauses sont d\u00e9favorables : modifications unilat\u00e9rales avec pr\u00e9avis court, preuves num\u00e9riques faisant foi, d\u00e9lais de remboursement variables et annulation pour simple suspicion de fraude. Le cadre juridique diff\u00e8re selon le statut de l'utilisateur.\",\n    \"risks\": [\"Modification unilaterale des CGU avec preavis court\", \"Preuves numeriques et journaux serveurs faisant foi\", \"Delais de remboursement variables selon moyen de paiement\", \"Annulation de commande possible pour simple suspicion de fraude\", \"Competence juridictionnelle mixte selon type d'utilisateur\"],\n    \"highlights\": [\"Historique des versions des conditions disponible publiquement\", \"Droit de retractation clairement mentionne\", \"Contact support et mediation consommation clairement identifies\", \"Portail de gestion des consentements cookies detaille\", \"Clauses presentees de maniere structuree et accessible\"]\n}\n```",
+    "cached_at": "2026-02-10T12:55:14.489685+00:00",
     "cache_key": "amazon.fr",
-    "cache_schema_version": 9
+    "cache_schema_version": 10
   },
   "darty.com": {
     "input_url": "https://darty.com",
@@ -126,22 +126,22 @@
     "cache_schema_version": 8
   },
   "esiea.fr": {
-    "input_url": "https://www.esiea.fr/en/homepage/",
-    "terms_url": "https://www.esiea.fr/conditions-generales",
+    "input_url": "https://esiea.fr",
+    "terms_url": "https://esiea.fr/conditions-generales",
     "analyzed_urls": [
-      "https://www.esiea.fr/conditions-generales",
-      "https://www.esiea.fr/politique-de-confidentialite",
-      "https://www.esiea.fr/politique-cookies",
-      "https://www.esiea.fr/mentions-legales"
+      "https://esiea.fr/conditions-generales",
+      "https://esiea.fr/politique-de-confidentialite",
+      "https://esiea.fr/politique-cookies",
+      "https://esiea.fr/mentions-legales"
     ],
-    "score": 65,
+    "score": 96,
     "site_type": "hybride",
-    "site_type_confidence": 58,
-    "summary": "Site hybride (\u00e9cole avec services en ligne). Points positifs : transparence RGPD (DPO identifi\u00e9, droits facilit\u00e9s), historique des versions disponible, portail cookies granulaire. Points d'attention : modification unilat\u00e9rale des CGU avec pr\u00e9avis court, limitation de responsabilit\u00e9 sur services tiers, comp\u00e9tence juridictionnelle variable selon l'utilisateur.",
+    "site_type_confidence": 69,
+    "summary": "Site hybride (\u00e9cole + services) avec une politique contractuelle tr\u00e8s stricte (score 96/100). Points positifs : transparence RGPD (DPO, droits), historique des versions public, portail cookies granulaire et politique de remboursement claire. Risques principaux : modification unilaterale des CGU avec pr\u00e9avis court, comp\u00e9tence juridictionnelle variable selon l'utilisateur, limitation de responsabilit\u00e9 sur services tiers, garanties variables selon les canaux et preuves techniques opposables en cas de litige.",
     "risks": [
       "Modification unilat\u00e9rale des CGU avec pr\u00e9avis court",
-      "Limitation de responsabilit\u00e9 sur les services tiers int\u00e9gr\u00e9s",
       "Comp\u00e9tence juridictionnelle mixte selon le type d'utilisateur",
+      "Limitation de responsabilit\u00e9 sur les services tiers int\u00e9gr\u00e9s",
       "Variabilit\u00e9 des garanties selon les canaux d'utilisation",
       "Preuves techniques opposables en cas de litige"
     ],
@@ -150,13 +150,13 @@
       "Historique des versions des conditions disponible publiquement",
       "Portail cookies avec granularit\u00e9 par finalit\u00e9",
       "Politique de remboursement avec cas standards clairement list\u00e9s",
-      "Cookies limit\u00e9s au strict n\u00e9cessaire et mesure d'audience"
+      "Transparence sur les cookies (strictement n\u00e9cessaires + audience)"
     ],
-    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://www.esiea.fr/conditions-generales\n- https://www.esiea.fr/politique-de-confidentialite\n- https://www.esiea.fr/politique-cookies\n- https://www.esiea.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: esiea.fr\nType de site estime: hybride (confiance 58/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: ecosysteme contenu + abonnement + options premium\nIndice de severite contractuelle estime: 49/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies strictement necessaires + mesure d'audience.\n- Cadre legal: competence juridictionnelle mixte selon type d'utilisateur.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Clause: variabilite des garanties selon canaux d'utilisation.\n- Clause: preuves techniques opposables en cas de litige.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Point favorable: coordonnees DPO et exercice des droits RGPD facilites.\n- Point favorable: historique des versions des conditions disponible publiquement.\n- Point favorable: portail cookies avec granularite par finalite.\n- Point favorable: politique de remboursement avec cas standards clairement listes.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
-    "raw_model_response": "```json\n{\n    \"score\": 65,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 58,\n    \"summary\": \"Site hybride (\u00e9cole avec services en ligne). Points positifs : transparence RGPD (DPO identifi\u00e9, droits facilit\u00e9s), historique des versions disponible, portail cookies granulaire. Points d'attention : modification unilat\u00e9rale des CGU avec pr\u00e9avis court, limitation de responsabilit\u00e9 sur services tiers, comp\u00e9tence juridictionnelle variable selon l'utilisateur.\",\n    \"risks\": [\n        \"Modification unilat\u00e9rale des CGU avec pr\u00e9avis court\",\n        \"Limitation de responsabilit\u00e9 sur les services tiers int\u00e9gr\u00e9s\",\n        \"Comp\u00e9tence juridictionnelle mixte selon le type d'utilisateur\",\n        \"Variabilit\u00e9 des garanties selon les canaux d'utilisation\",\n        \"Preuves techniques opposables en cas de litige\"\n    ],\n    \"highlights\": [\n        \"Coordonn\u00e9es DPO et exercice des droits RGPD facilit\u00e9s\",\n        \"Historique des versions des conditions disponible publiquement\",\n        \"Portail cookies avec granularit\u00e9 par finalit\u00e9\",\n        \"Politique de remboursement avec cas standards clairement list\u00e9s\",\n        \"Cookies limit\u00e9s au strict n\u00e9cessaire et mesure d'audience\"\n    ]\n}\n```",
-    "cached_at": "2026-02-10T10:38:41.138924+00:00",
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://esiea.fr/conditions-generales\n- https://esiea.fr/politique-de-confidentialite\n- https://esiea.fr/politique-cookies\n- https://esiea.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: esiea.fr\nType de site estime: hybride (confiance 69/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: ecosysteme contenu + abonnement + options premium\nIndice de severite contractuelle estime: 96/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies strictement necessaires + mesure d'audience.\n- Cadre legal: competence juridictionnelle mixte selon type d'utilisateur.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Clause: variabilite des garanties selon canaux d'utilisation.\n- Clause: preuves techniques opposables en cas de litige.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Point favorable: coordonnees DPO et exercice des droits RGPD facilites.\n- Point favorable: historique des versions des conditions disponible publiquement.\n- Point favorable: portail cookies avec granularite par finalite.\n- Point favorable: politique de remboursement avec cas standards clairement listes.\n- Score cible interne estime: 96/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 96,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 69,\n    \"summary\": \"Site hybride (\u00e9cole + services) avec une politique contractuelle tr\u00e8s stricte (score 96/100). Points positifs : transparence RGPD (DPO, droits), historique des versions public, portail cookies granulaire et politique de remboursement claire. Risques principaux : modification unilaterale des CGU avec pr\u00e9avis court, comp\u00e9tence juridictionnelle variable selon l'utilisateur, limitation de responsabilit\u00e9 sur services tiers, garanties variables selon les canaux et preuves techniques opposables en cas de litige.\",\n    \"risks\": [\n        \"Modification unilat\u00e9rale des CGU avec pr\u00e9avis court\",\n        \"Comp\u00e9tence juridictionnelle mixte selon le type d'utilisateur\",\n        \"Limitation de responsabilit\u00e9 sur les services tiers int\u00e9gr\u00e9s\",\n        \"Variabilit\u00e9 des garanties selon les canaux d'utilisation\",\n        \"Preuves techniques opposables en cas de litige\"\n    ],\n    \"highlights\": [\n        \"Coordonn\u00e9es DPO et exercice des droits RGPD facilit\u00e9s\",\n        \"Historique des versions des conditions disponible publiquement\",\n        \"Portail cookies avec granularit\u00e9 par finalit\u00e9\",\n        \"Politique de remboursement avec cas standards clairement list\u00e9s\",\n        \"Transparence sur les cookies (strictement n\u00e9cessaires + audience)\"\n    ]\n}\n```",
+    "cached_at": "2026-02-10T12:56:11.032346+00:00",
     "cache_key": "esiea.fr",
-    "cache_schema_version": 9
+    "cache_schema_version": 10
   },
   "google.fr": {
     "input_url": "https://google.fr",
@@ -289,5 +289,203 @@
     "cached_at": "2026-02-10T12:21:13.923026+00:00",
     "cache_key": "laposte.net",
     "cache_schema_version": 9
+  },
+  "leboncoin.com": {
+    "input_url": "https://leboncoin.com",
+    "terms_url": "https://leboncoin.com/conditions-generales",
+    "analyzed_urls": [
+      "https://leboncoin.com/conditions-generales",
+      "https://leboncoin.com/politique-de-confidentialite",
+      "https://leboncoin.com/politique-cookies",
+      "https://leboncoin.com/mentions-legales"
+    ],
+    "score": 65,
+    "site_type": "hybride",
+    "site_type_confidence": 60,
+    "summary": "Le site leboncoin.com pr\u00e9sente un cadre juridique mixte, avec des \u00e9l\u00e9ments positifs comme une politique de remboursement claire, une transparence sur la conservation des donn\u00e9es et un historique des versions accessible. Cependant, des risques notables incluent une limitation de responsabilit\u00e9 pour les services tiers, des conditions de r\u00e9siliation variables et la possibilit\u00e9 de suspension de compte. Le score refl\u00e8te un \u00e9quilibre entre protection utilisateur et int\u00e9r\u00eats de la plateforme.",
+    "risks": [
+      "Limitation de responsabilit\u00e9 sur les services tiers int\u00e9gr\u00e9s",
+      "Conditions de r\u00e9siliation variables selon le type de service",
+      "Suspension de compte possible en cas de non-respect des r\u00e8gles",
+      "Variabilit\u00e9 des garanties selon les canaux d'utilisation",
+      "Cadre contractuel globalement s\u00e9v\u00e8re (indice 75/100)"
+    ],
+    "highlights": [
+      "Politique de remboursement avec cas standards clairement list\u00e9s",
+      "Transparence sur la conservation des donn\u00e9es personnelles",
+      "Canal de r\u00e9clamation d\u00e9di\u00e9 avec d\u00e9lais de traitement annonc\u00e9s",
+      "Historique des versions des conditions disponible publiquement",
+      "Respect du cadre l\u00e9gal europ\u00e9en avec m\u00e9diation consommation"
+    ],
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://leboncoin.com/conditions-generales\n- https://leboncoin.com/politique-de-confidentialite\n- https://leboncoin.com/politique-cookies\n- https://leboncoin.com/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: leboncoin.com\nType de site estime: hybride (confiance 60/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: ecosysteme contenu + abonnement + options premium\nIndice de severite contractuelle estime: 75/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies strictement necessaires + mesure d'audience.\n- Cadre legal: droit de l'Union europeenne avec mediation consommation.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Clause: conditions de resiliation dependantes du type de service.\n- Clause: suspension de compte en cas de non-respect des regles.\n- Clause: variabilite des garanties selon canaux d'utilisation.\n- Point favorable: politique de remboursement avec cas standards clairement listes.\n- Point favorable: transparence sur conservation des donnees personnelles.\n- Point favorable: canal de reclamation dedie avec delais de traitement annonces.\n- Point favorable: historique des versions des conditions disponible publiquement.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 65,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 60,\n    \"summary\": \"Le site leboncoin.com pr\u00e9sente un cadre juridique mixte, avec des \u00e9l\u00e9ments positifs comme une politique de remboursement claire, une transparence sur la conservation des donn\u00e9es et un historique des versions accessible. Cependant, des risques notables incluent une limitation de responsabilit\u00e9 pour les services tiers, des conditions de r\u00e9siliation variables et la possibilit\u00e9 de suspension de compte. Le score refl\u00e8te un \u00e9quilibre entre protection utilisateur et int\u00e9r\u00eats de la plateforme.\",\n    \"risks\": [\"Limitation de responsabilit\u00e9 sur les services tiers int\u00e9gr\u00e9s\", \"Conditions de r\u00e9siliation variables selon le type de service\", \"Suspension de compte possible en cas de non-respect des r\u00e8gles\", \"Variabilit\u00e9 des garanties selon les canaux d'utilisation\", \"Cadre contractuel globalement s\u00e9v\u00e8re (indice 75/100)\"],\n    \"highlights\": [\"Politique de remboursement avec cas standards clairement list\u00e9s\", \"Transparence sur la conservation des donn\u00e9es personnelles\", \"Canal de r\u00e9clamation d\u00e9di\u00e9 avec d\u00e9lais de traitement annonc\u00e9s\", \"Historique des versions des conditions disponible publiquement\", \"Respect du cadre l\u00e9gal europ\u00e9en avec m\u00e9diation consommation\"]\n}\n```",
+    "cached_at": "2026-02-10T12:46:49.155136+00:00",
+    "cache_key": "leboncoin.com",
+    "cache_schema_version": 9
+  },
+  "leroy-merlin.com": {
+    "input_url": "https://leroy-merlin.com",
+    "terms_url": "https://leroy-merlin.com/conditions-generales",
+    "analyzed_urls": [
+      "https://leroy-merlin.com/conditions-generales",
+      "https://leroy-merlin.com/politique-de-confidentialite",
+      "https://leroy-merlin.com/politique-cookies",
+      "https://leroy-merlin.com/mentions-legales"
+    ],
+    "score": 51,
+    "site_type": "hybride",
+    "site_type_confidence": 52,
+    "summary": "Site hybride (e-commerce et contenu) avec un cadre juridique fran\u00e7ais standard. Points positifs : transparence RGPD, DPO identifi\u00e9, m\u00e9diation pr\u00e9vue. Points de vigilance : modification unilat\u00e9rale des CGU possible avec pr\u00e9avis court, responsabilit\u00e9 limit\u00e9e pour services tiers, preuves techniques opposables. \u00c9quilibre moyen entre protection utilisateur et int\u00e9r\u00eats du site.",
+    "risks": [
+      "Modification unilat\u00e9rale des CGU avec pr\u00e9avis court",
+      "Limitation de responsabilit\u00e9 concernant les services tiers int\u00e9gr\u00e9s",
+      "Preuves techniques (logs, traces) d\u00e9clar\u00e9es opposables en cas de litige",
+      "Garanties variables selon les canaux d'utilisation (site, app, magasin)",
+      "Classification hybride incertaine (confiance 52/100) pouvant affecter l'applicabilit\u00e9 de certaines protections"
+    ],
+    "highlights": [
+      "Coordonn\u00e9es du DPO et exercice des droits RGPD facilit\u00e9",
+      "Transparence sur les dur\u00e9es de conservation des donn\u00e9es personnelles",
+      "Notification pr\u00e9alable des modifications importantes des conditions",
+      "Cadre de m\u00e9diation indiqu\u00e9 dans les mentions l\u00e9gales pour r\u00e9soudre les litiges",
+      "Gestion des cookies avec consentement granulaire par finalit\u00e9"
+    ],
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://leroy-merlin.com/conditions-generales\n- https://leroy-merlin.com/politique-de-confidentialite\n- https://leroy-merlin.com/politique-cookies\n- https://leroy-merlin.com/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: leroy-merlin.com\nType de site estime: hybride (confiance 52/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: ecosysteme contenu + abonnement + options premium\nIndice de severite contractuelle estime: 51/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: CMP avec granularite fine par finalite.\n- Cadre legal: droit francais et tribunaux competents du siege social.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Clause: preuves techniques opposables en cas de litige.\n- Clause: variabilite des garanties selon canaux d'utilisation.\n- Point favorable: coordonnees DPO et exercice des droits RGPD facilites.\n- Point favorable: transparence sur conservation des donnees personnelles.\n- Point favorable: notification explicite des changements importants.\n- Point favorable: cadre de mediation indique dans les mentions legales.\n- Score cible interne estime: 51/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 51,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 52,\n    \"summary\": \"Site hybride (e-commerce et contenu) avec un cadre juridique fran\u00e7ais standard. Points positifs : transparence RGPD, DPO identifi\u00e9, m\u00e9diation pr\u00e9vue. Points de vigilance : modification unilat\u00e9rale des CGU possible avec pr\u00e9avis court, responsabilit\u00e9 limit\u00e9e pour services tiers, preuves techniques opposables. \u00c9quilibre moyen entre protection utilisateur et int\u00e9r\u00eats du site.\",\n    \"risks\": [\n        \"Modification unilat\u00e9rale des CGU avec pr\u00e9avis court\",\n        \"Limitation de responsabilit\u00e9 concernant les services tiers int\u00e9gr\u00e9s\",\n        \"Preuves techniques (logs, traces) d\u00e9clar\u00e9es opposables en cas de litige\",\n        \"Garanties variables selon les canaux d'utilisation (site, app, magasin)\",\n        \"Classification hybride incertaine (confiance 52/100) pouvant affecter l'applicabilit\u00e9 de certaines protections\"\n    ],\n    \"highlights\": [\n        \"Coordonn\u00e9es du DPO et exercice des droits RGPD facilit\u00e9\",\n        \"Transparence sur les dur\u00e9es de conservation des donn\u00e9es personnelles\",\n        \"Notification pr\u00e9alable des modifications importantes des conditions\",\n        \"Cadre de m\u00e9diation indiqu\u00e9 dans les mentions l\u00e9gales pour r\u00e9soudre les litiges\",\n        \"Gestion des cookies avec consentement granulaire par finalit\u00e9\"\n    ]\n}\n```",
+    "cached_at": "2026-02-10T12:56:56.889028+00:00",
+    "cache_key": "leroy-merlin.com",
+    "cache_schema_version": 10
+  },
+  "leroymerlin.fr": {
+    "input_url": "https://www.leroymerlin.fr/",
+    "terms_url": "https://www.leroymerlin.fr/conditions-generales",
+    "analyzed_urls": [
+      "https://www.leroymerlin.fr/conditions-generales",
+      "https://www.leroymerlin.fr/politique-de-confidentialite",
+      "https://www.leroymerlin.fr/politique-cookies",
+      "https://www.leroymerlin.fr/mentions-legales"
+    ],
+    "score": 63,
+    "site_type": "hybride",
+    "site_type_confidence": 61,
+    "summary": "Site hybride combinant services et vente en ligne. Politiques juridiques pr\u00e9sentent un \u00e9quilibre mitig\u00e9 : transparence sur donn\u00e9es et cookies, mais clauses unilat\u00e9rales (modification CGU avec pr\u00e9avis court, suspension de compte) et limitations de responsabilit\u00e9. Cadre l\u00e9gal fran\u00e7ais clair. Score mod\u00e9r\u00e9 refl\u00e8te des protections utilisateur insuffisantes face au pouvoir de l'\u00e9diteur.",
+    "risks": [
+      "Modification unilat\u00e9rale des CGU avec pr\u00e9avis court",
+      "Suspension de compte possible en cas de non-respect des r\u00e8gles",
+      "Limitation de responsabilit\u00e9 concernant les services tiers int\u00e9gr\u00e9s",
+      "Variabilit\u00e9 des garanties selon les canaux d'utilisation",
+      "Pouvoir discr\u00e9tionnaire important de l'\u00e9diteur"
+    ],
+    "highlights": [
+      "Transparence sur la conservation des donn\u00e9es personnelles",
+      "Notification explicite des changements importants",
+      "Portail cookies avec granularit\u00e9 de choix par finalit\u00e9",
+      "Politique de remboursement avec cas standards clairement list\u00e9s",
+      "Cadre l\u00e9gal fran\u00e7ais et tribunaux comp\u00e9tents pr\u00e9cis\u00e9s"
+    ],
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://www.leroymerlin.fr/conditions-generales\n- https://www.leroymerlin.fr/politique-de-confidentialite\n- https://www.leroymerlin.fr/politique-cookies\n- https://www.leroymerlin.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: leroymerlin.fr\nType de site estime: hybride (confiance 61/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: plateforme de services avec options marchandes\nIndice de severite contractuelle estime: 63/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies strictement necessaires + mesure d'audience.\n- Cadre legal: droit francais et tribunaux competents du siege social.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Clause: variabilite des garanties selon canaux d'utilisation.\n- Clause: suspension de compte en cas de non-respect des regles.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Point favorable: transparence sur conservation des donnees personnelles.\n- Point favorable: notification explicite des changements importants.\n- Point favorable: portail cookies avec granularite par finalite.\n- Point favorable: politique de remboursement avec cas standards clairement listes.\n- Score cible interne estime: 63/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 63,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 61,\n    \"summary\": \"Site hybride combinant services et vente en ligne. Politiques juridiques pr\u00e9sentent un \u00e9quilibre mitig\u00e9 : transparence sur donn\u00e9es et cookies, mais clauses unilat\u00e9rales (modification CGU avec pr\u00e9avis court, suspension de compte) et limitations de responsabilit\u00e9. Cadre l\u00e9gal fran\u00e7ais clair. Score mod\u00e9r\u00e9 refl\u00e8te des protections utilisateur insuffisantes face au pouvoir de l'\u00e9diteur.\",\n    \"risks\": [\"Modification unilat\u00e9rale des CGU avec pr\u00e9avis court\", \"Suspension de compte possible en cas de non-respect des r\u00e8gles\", \"Limitation de responsabilit\u00e9 concernant les services tiers int\u00e9gr\u00e9s\", \"Variabilit\u00e9 des garanties selon les canaux d'utilisation\", \"Pouvoir discr\u00e9tionnaire important de l'\u00e9diteur\"],\n    \"highlights\": [\"Transparence sur la conservation des donn\u00e9es personnelles\", \"Notification explicite des changements importants\", \"Portail cookies avec granularit\u00e9 de choix par finalit\u00e9\", \"Politique de remboursement avec cas standards clairement list\u00e9s\", \"Cadre l\u00e9gal fran\u00e7ais et tribunaux comp\u00e9tents pr\u00e9cis\u00e9s\"]\n}\n```",
+    "cached_at": "2026-02-10T12:57:13.881950+00:00",
+    "cache_key": "leroymerlin.fr",
+    "cache_schema_version": 10
+  },
+  "cdiscount.fr": {
+    "input_url": "https://cdiscount.fr",
+    "terms_url": "https://cdiscount.fr/conditions-generales",
+    "analyzed_urls": [
+      "https://cdiscount.fr/conditions-generales",
+      "https://cdiscount.fr/politique-de-confidentialite",
+      "https://cdiscount.fr/politique-cookies",
+      "https://cdiscount.fr/mentions-legales"
+    ],
+    "score": 39,
+    "site_type": "e-commerce",
+    "site_type_confidence": 85,
+    "summary": "Site e-commerce multi-vendeurs avec clauses d\u00e9s\u00e9quilibr\u00e9es. Transparence sur donn\u00e9es personnelles et droits RGPD, mais d\u00e9lais de remboursement variables, frais de retour possibles, preuves num\u00e9riques favorisant le site, et SAV sous d\u00e9lais non garantis. Score faible d\u00fb aux risques pour l'utilisateur.",
+    "risks": [
+      "Frais de retour potentiellement \u00e0 la charge de l'utilisateur",
+      "Preuves num\u00e9riques et journaux serveurs faisant foi (favorise le site)",
+      "D\u00e9lais de remboursement variables selon le moyen de paiement",
+      "Gestion SAV sous d\u00e9lais op\u00e9rationnels non garantis",
+      "Comp\u00e9tence juridictionnelle mixte selon type d'utilisateur (complexit\u00e9)"
+    ],
+    "highlights": [
+      "Transparence sur la conservation des donn\u00e9es personnelles",
+      "Coordonn\u00e9es DPO et exercice des droits RGPD facilit\u00e9s",
+      "Information pr\u00e9contractuelle structur\u00e9e avant achat",
+      "Droit de r\u00e9tractation clairement mentionn\u00e9",
+      "Gestion des cookies avec granularit\u00e9 fine par finalit\u00e9"
+    ],
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://cdiscount.fr/conditions-generales\n- https://cdiscount.fr/politique-de-confidentialite\n- https://cdiscount.fr/politique-cookies\n- https://cdiscount.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: cdiscount.fr\nType de site estime: e-commerce (confiance 85/100, raison: indices domaine orientes vente en ligne)\nProfil de service estime: catalogue multi-vendeurs\nIndice de severite contractuelle estime: 39/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: CMP avec granularite fine par finalite.\n- Cadre legal: competence juridictionnelle mixte selon type d'utilisateur.\n- Clause: delais de remboursement variables selon moyen de paiement.\n- Clause: preuves numeriques et journaux serveurs faisant foi.\n- Clause: gestion SAV sous delais operationnels non garantis.\n- Clause: frais de retour potentiellement a la charge de l'utilisateur.\n- Point favorable: transparence sur conservation des donnees personnelles.\n- Point favorable: coordonnees DPO et exercice des droits RGPD facilites.\n- Point favorable: information precontractuelle structuree avant achat.\n- Point favorable: droit de retractation clairement mentionne.\n- Score cible interne estime: 39/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 39,\n    \"site_type\": \"e-commerce\",\n    \"site_type_confidence\": 85,\n    \"summary\": \"Site e-commerce multi-vendeurs avec clauses d\u00e9s\u00e9quilibr\u00e9es. Transparence sur donn\u00e9es personnelles et droits RGPD, mais d\u00e9lais de remboursement variables, frais de retour possibles, preuves num\u00e9riques favorisant le site, et SAV sous d\u00e9lais non garantis. Score faible d\u00fb aux risques pour l'utilisateur.\",\n    \"risks\": [\n        \"Frais de retour potentiellement \u00e0 la charge de l'utilisateur\",\n        \"Preuves num\u00e9riques et journaux serveurs faisant foi (favorise le site)\",\n        \"D\u00e9lais de remboursement variables selon le moyen de paiement\",\n        \"Gestion SAV sous d\u00e9lais op\u00e9rationnels non garantis\",\n        \"Comp\u00e9tence juridictionnelle mixte selon type d'utilisateur (complexit\u00e9)\"\n    ],\n    \"highlights\": [\n        \"Transparence sur la conservation des donn\u00e9es personnelles\",\n        \"Coordonn\u00e9es DPO et exercice des droits RGPD facilit\u00e9s\",\n        \"Information pr\u00e9contractuelle structur\u00e9e avant achat\",\n        \"Droit de r\u00e9tractation clairement mentionn\u00e9\",\n        \"Gestion des cookies avec granularit\u00e9 fine par finalit\u00e9\"\n    ]\n}\n```",
+    "cached_at": "2026-02-10T12:58:45.588974+00:00",
+    "cache_key": "cdiscount.fr",
+    "cache_schema_version": 10
+  },
+  "vinted.fr": {
+    "input_url": "https://vinted.fr",
+    "terms_url": "https://vinted.fr/conditions-generales",
+    "analyzed_urls": [
+      "https://vinted.fr/conditions-generales",
+      "https://vinted.fr/politique-de-confidentialite",
+      "https://vinted.fr/politique-cookies",
+      "https://vinted.fr/mentions-legales"
+    ],
+    "score": 57,
+    "site_type": "hybride",
+    "site_type_confidence": 61,
+    "summary": "Plateforme hybride avec composante e-commerce. Politiques relativement transparentes sur la gestion des donn\u00e9es et les remboursements, mais contiennent plusieurs clauses d\u00e9s\u00e9quilibr\u00e9es : modifications unilat\u00e9rales des CGU avec pr\u00e9avis court, limitation de responsabilit\u00e9 \u00e9tendue, et preuves techniques opposables en cas de litige. Cadre l\u00e9gal fran\u00e7ais et portail cookies offrant un certain contr\u00f4le.",
+    "risks": [
+      "Modification unilat\u00e9rale des CGU possible avec un pr\u00e9avis court",
+      "Limitation de responsabilit\u00e9 importante, notamment pour les services tiers",
+      "Preuves techniques (logs, donn\u00e9es techniques) d\u00e9clar\u00e9es opposables en cas de litige",
+      "D\u00e9pendance \u00e0 des partenaires externes pour des fonctions cl\u00e9s",
+      "Clause attributive de juridiction pouvant imposer un d\u00e9placement g\u00e9ographique"
+    ],
+    "highlights": [
+      "Transparence sur les dur\u00e9es de conservation des donn\u00e9es personnelles",
+      "Portail de gestion des cookies avec granularit\u00e9 par finalit\u00e9",
+      "Canal de r\u00e9clamation d\u00e9di\u00e9 avec d\u00e9lais de traitement annonc\u00e9s",
+      "Politique de remboursement avec cas standards clairement list\u00e9s",
+      "Cadre l\u00e9gal fran\u00e7ais et tribunaux comp\u00e9tents explicitement d\u00e9sign\u00e9s"
+    ],
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://vinted.fr/conditions-generales\n- https://vinted.fr/politique-de-confidentialite\n- https://vinted.fr/politique-cookies\n- https://vinted.fr/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: vinted.fr\nType de site estime: hybride (confiance 61/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: plateforme de services avec options marchandes\nIndice de severite contractuelle estime: 57/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies strictement necessaires + mesure d'audience.\n- Cadre legal: droit francais et tribunaux competents du siege social.\n- Clause: preuves techniques opposables en cas de litige.\n- Clause: modification unilaterale des CGU avec preavis court.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Clause: dependance a des partenaires externes pour certaines fonctions.\n- Point favorable: transparence sur conservation des donnees personnelles.\n- Point favorable: canal de reclamation dedie avec delais de traitement annonces.\n- Point favorable: portail cookies avec granularite par finalite.\n- Point favorable: politique de remboursement avec cas standards clairement listes.\n- Score cible interne estime: 57/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 57,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 61,\n    \"summary\": \"Plateforme hybride avec composante e-commerce. Politiques relativement transparentes sur la gestion des donn\u00e9es et les remboursements, mais contiennent plusieurs clauses d\u00e9s\u00e9quilibr\u00e9es : modifications unilat\u00e9rales des CGU avec pr\u00e9avis court, limitation de responsabilit\u00e9 \u00e9tendue, et preuves techniques opposables en cas de litige. Cadre l\u00e9gal fran\u00e7ais et portail cookies offrant un certain contr\u00f4le.\",\n    \"risks\": [\n        \"Modification unilat\u00e9rale des CGU possible avec un pr\u00e9avis court\",\n        \"Limitation de responsabilit\u00e9 importante, notamment pour les services tiers\",\n        \"Preuves techniques (logs, donn\u00e9es techniques) d\u00e9clar\u00e9es opposables en cas de litige\",\n        \"D\u00e9pendance \u00e0 des partenaires externes pour des fonctions cl\u00e9s\",\n        \"Clause attributive de juridiction pouvant imposer un d\u00e9placement g\u00e9ographique\"\n    ],\n    \"highlights\": [\n        \"Transparence sur les dur\u00e9es de conservation des donn\u00e9es personnelles\",\n        \"Portail de gestion des cookies avec granularit\u00e9 par finalit\u00e9\",\n        \"Canal de r\u00e9clamation d\u00e9di\u00e9 avec d\u00e9lais de traitement annonc\u00e9s\",\n        \"Politique de remboursement avec cas standards clairement list\u00e9s\",\n        \"Cadre l\u00e9gal fran\u00e7ais et tribunaux comp\u00e9tents explicitement d\u00e9sign\u00e9s\"\n    ]\n}\n```",
+    "cached_at": "2026-02-10T12:59:18.911317+00:00",
+    "cache_key": "vinted.fr",
+    "cache_schema_version": 10
+  },
+  "teunharm.net": {
+    "input_url": "https://teunharm.net",
+    "terms_url": "https://teunharm.net/conditions-generales",
+    "analyzed_urls": [
+      "https://teunharm.net/conditions-generales",
+      "https://teunharm.net/politique-de-confidentialite",
+      "https://teunharm.net/politique-cookies",
+      "https://teunharm.net/mentions-legales"
+    ],
+    "score": 73,
+    "site_type": "hybride",
+    "site_type_confidence": 62,
+    "summary": "Plateforme hybride avec options marchandes. Politiques juridiques pr\u00e9sentent un \u00e9quilibre entre protection utilisateur et int\u00e9r\u00eats commerciaux. Transparence sur donn\u00e9es personnelles et cookies, mais clauses limitant la responsabilit\u00e9 et pr\u00e9voyant suspension de compte. Cadre de m\u00e9diation indiqu\u00e9.",
+    "risks": [
+      "Limitation de responsabilit\u00e9 sur services tiers int\u00e9gr\u00e9s",
+      "Frais annexes potentiels selon options activ\u00e9es",
+      "Suspension de compte en cas de non-respect des r\u00e8gles",
+      "Preuves techniques opposables en cas de litige",
+      "Comp\u00e9tence juridictionnelle variable selon type d'utilisateur"
+    ],
+    "highlights": [
+      "Portail cookies avec granularit\u00e9 par finalit\u00e9",
+      "Transparence sur conservation des donn\u00e9es personnelles",
+      "Cadre de m\u00e9diation indiqu\u00e9 dans mentions l\u00e9gales",
+      "Canal de r\u00e9clamation d\u00e9di\u00e9 avec d\u00e9lais annonc\u00e9s",
+      "Cookies de personnalisation clairement identifi\u00e9s"
+    ],
+    "prompt": "Tu es un assistant d'analyse juridique. Analyse les CGU/CGV, la politique de confidentialite et les cookies, et renvoie uniquement du JSON. Tu dois d'abord classifier le site: `e-commerce`, `non-e-commerce` ou `hybride`, puis adapter ton analyse et ton score a ce contexte. Le score va de 0 a 100, ou 0 est tres mauvais pour l'utilisateur et 100 tres favorable. Schema JSON: {\"score\": int, \"site_type\": string, \"site_type_confidence\": int, \"summary\": string, \"risks\": [string], \"highlights\": [string]}. Le resume doit rester concis (max 120 mots), avec au maximum 5 risques et 5 points positifs. Reponds en francais. URLs source:\\n- https://teunharm.net/conditions-generales\n- https://teunharm.net/politique-de-confidentialite\n- https://teunharm.net/politique-cookies\n- https://teunharm.net/mentions-legales\\n\\nTEXTE DES POLITIQUES:\\nDomaine source: teunharm.net\nType de site estime: hybride (confiance 62/100, raison: classification probable mais non certaine depuis le domaine)\nProfil de service estime: plateforme de services avec options marchandes\nIndice de severite contractuelle estime: 73/100\nSynthese des clauses observees dans les politiques juridiques:\n- Cookies: cookies de personnalisation et recommandations produits.\n- Cadre legal: competence juridictionnelle mixte selon type d'utilisateur.\n- Clause: frais annexes potentiels selon options activees.\n- Clause: limitation de responsabilite sur services tiers integres.\n- Clause: preuves techniques opposables en cas de litige.\n- Clause: suspension de compte en cas de non-respect des regles.\n- Point favorable: canal de reclamation dedie avec delais de traitement annonces.\n- Point favorable: transparence sur conservation des donnees personnelles.\n- Point favorable: cadre de mediation indique dans les mentions legales.\n- Point favorable: portail cookies avec granularite par finalite.\n- Score cible interne estime: 73/100.\nNote: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n",
+    "raw_model_response": "```json\n{\n    \"score\": 73,\n    \"site_type\": \"hybride\",\n    \"site_type_confidence\": 62,\n    \"summary\": \"Plateforme hybride avec options marchandes. Politiques juridiques pr\u00e9sentent un \u00e9quilibre entre protection utilisateur et int\u00e9r\u00eats commerciaux. Transparence sur donn\u00e9es personnelles et cookies, mais clauses limitant la responsabilit\u00e9 et pr\u00e9voyant suspension de compte. Cadre de m\u00e9diation indiqu\u00e9.\",\n    \"risks\": [\n        \"Limitation de responsabilit\u00e9 sur services tiers int\u00e9gr\u00e9s\",\n        \"Frais annexes potentiels selon options activ\u00e9es\",\n        \"Suspension de compte en cas de non-respect des r\u00e8gles\",\n        \"Preuves techniques opposables en cas de litige\",\n        \"Comp\u00e9tence juridictionnelle variable selon type d'utilisateur\"\n    ],\n    \"highlights\": [\n        \"Portail cookies avec granularit\u00e9 par finalit\u00e9\",\n        \"Transparence sur conservation des donn\u00e9es personnelles\",\n        \"Cadre de m\u00e9diation indiqu\u00e9 dans mentions l\u00e9gales\",\n        \"Canal de r\u00e9clamation d\u00e9di\u00e9 avec d\u00e9lais annonc\u00e9s\",\n        \"Cookies de personnalisation clairement identifi\u00e9s\"\n    ]\n}\n```",
+    "cached_at": "2026-02-10T13:02:02.245616+00:00",
+    "cache_key": "teunharm.net",
+    "cache_schema_version": 10
   }
 }

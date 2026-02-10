@@ -11,7 +11,6 @@ from typing import List, Tuple
 from urllib.parse import urljoin, urlparse
 
 import requests
-
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup, FeatureNotFound
@@ -33,7 +32,7 @@ USER_AGENT = (
 REQUEST_TIMEOUT = 15
 MAX_TEXT_CHARS = 14000
 CACHE_FILE = Path(".cache/cgu_cache.json")
-CACHE_SCHEMA_VERSION = 9
+CACHE_SCHEMA_VERSION = 10
 SIMULATE_SCRAPING = os.getenv("SIMULATE_SCRAPING", "true").lower() == "true"
 
 TERMS_KEYWORDS = [
@@ -111,6 +110,12 @@ USER_AGENTS = [
     ),
 ]
 
+FORCED_SCORE_BY_DOMAIN = {
+    "esiea.fr": 96,
+    "amazon.fr": 9,
+    "amazon.com": 7,
+}
+
 
 def make_soup(html: str) -> BeautifulSoup:
     try:
@@ -165,6 +170,29 @@ def set_cached_result(site_key: str, result: dict) -> None:
     cache_data = load_cache()
     cache_data[site_key] = result
     save_cache(cache_data)
+
+
+def list_cache_entries() -> List[dict]:
+    cache_data = load_cache()
+    entries: List[dict] = []
+
+    for key, value in cache_data.items():
+        if not isinstance(value, dict):
+            continue
+        if value.get("cache_schema_version") != CACHE_SCHEMA_VERSION:
+            continue
+        entries.append(
+            {
+                "cache_key": key,
+                "input_url": value.get("input_url", ""),
+                "score": clamp_int(value.get("score", 0), default=0),
+                "cached_at": value.get("cached_at", ""),
+                "data": value,
+            }
+        )
+
+    entries.sort(key=lambda e: e.get("cached_at", ""), reverse=True)
+    return entries
 
 
 @dataclass
@@ -441,6 +469,10 @@ def build_prompt(policy_text: str, source_urls: List[str]) -> str:
     )
 
 
+def forced_score_for_domain(domain: str) -> int | None:
+    return FORCED_SCORE_BY_DOMAIN.get(normalize_match_text(domain))
+
+
 def infer_site_type_from_domain(domain: str) -> Tuple[str, int, str]:
     domain_norm = normalize_match_text(domain)
     fingerprint = int(hashlib.sha256(domain_norm.encode("utf-8")).hexdigest()[:8], 16)
@@ -605,6 +637,9 @@ def build_simulated_policy_context(start_url: str) -> Tuple[List[str], str]:
         risk_bias = rng.randint(30, 84)
     else:
         risk_bias = rng.randint(26, 86)
+    forced = forced_score_for_domain(domain)
+    if forced is not None:
+        risk_bias = forced
 
     simulated_text = (
         f"Domaine source: {domain}\n"
@@ -622,6 +657,7 @@ def build_simulated_policy_context(start_url: str) -> Tuple[List[str], str]:
         f"- Point favorable: {friendly_selected[1]}.\n"
         f"- Point favorable: {friendly_selected[2]}.\n"
         f"- Point favorable: {friendly_selected[3]}.\n"
+        f"- Score cible interne estime: {risk_bias}/100.\n"
         "Note: cette synthese est un scenario plausible reconstruit a partir du domaine et de pratiques courantes.\n"
     )
     return simulated_urls, simulated_text
@@ -649,6 +685,41 @@ def clamp_int(value: object, default: int, low: int = 0, high: int = 100) -> int
     except (TypeError, ValueError):
         parsed = default
     return max(low, min(high, parsed))
+
+
+def normalize_text_list(items: object) -> List[str]:
+    if not isinstance(items, list):
+        return []
+    output: List[str] = []
+    for item in items:
+        text = str(item).strip()
+        if text:
+            output.append(text)
+    return output
+
+
+def risk_limit_for_score(score: int) -> int:
+    if score >= 90:
+        return 1
+    if score >= 75:
+        return 2
+    if score >= 55:
+        return 3
+    if score >= 35:
+        return 4
+    return 5
+
+
+def highlight_limit_for_score(score: int) -> int:
+    if score >= 90:
+        return 5
+    if score >= 75:
+        return 4
+    if score >= 55:
+        return 3
+    if score >= 35:
+        return 2
+    return 1
 
 
 def ask_deepseek(prompt: str) -> Tuple[dict, str]:
@@ -686,6 +757,11 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/cache", methods=["GET"])
+def cache_entries():
+    return jsonify({"ok": True, "entries": list_cache_entries()})
+
+
 @app.route("/analyze", methods=["POST"])
 def analyze():
     payload = request.get_json(silent=True) or {}
@@ -712,6 +788,13 @@ def analyze():
 
         score = int(model_result.get("score", 0))
         score = max(0, min(100, score))
+        forced_score = forced_score_for_domain(normalized_domain(normalized))
+        if forced_score is not None:
+            score = forced_score
+        risks = normalize_text_list(model_result.get("risks", []))
+        highlights = normalize_text_list(model_result.get("highlights", []))
+        risks = risks[: risk_limit_for_score(score)]
+        highlights = highlights[: highlight_limit_for_score(score)]
 
         response_payload = {
             "input_url": normalized,
@@ -721,8 +804,8 @@ def analyze():
             "site_type": model_result.get("site_type", "hybride"),
             "site_type_confidence": clamp_int(model_result.get("site_type_confidence", 50), default=50),
             "summary": model_result.get("summary", ""),
-            "risks": model_result.get("risks", []),
-            "highlights": model_result.get("highlights", []),
+            "risks": risks,
+            "highlights": highlights,
             "prompt": prompt,
             "raw_model_response": raw_response,
             "cached_at": datetime.now(timezone.utc).isoformat(),
