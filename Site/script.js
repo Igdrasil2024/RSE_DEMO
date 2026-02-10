@@ -52,14 +52,14 @@ function getScoreLabel(score) {
     let label = "";
     let colorClass = "";
 
-    if (score >= 8.0) {
-        label = "🟢 Faible invasivité";
+    if (score >= 7.0) {
+        label = "🟢 CGU favorable pour l'utilisateur";
         colorClass = "green";
-    } else if (score >= 5.0) {
-        label = "🟠 Transparence moyenne";
+    } else if (score >= 3.1) {
+        label = "🟠 Niveau de CGU intermédiare";
         colorClass = "orange";
     } else {
-        label = "🔴 Risque élevé";
+        label = "🔴 CGU defavorable pour l'utilisateur";
         colorClass = "red";
     }
 
