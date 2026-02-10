@@ -11,6 +11,7 @@ from typing import List, Tuple
 from urllib.parse import urljoin, urlparse
 
 import requests
+
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup, FeatureNotFound
