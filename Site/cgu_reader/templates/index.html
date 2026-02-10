@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGU Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  </head>
+  <body>
+    <div class="alien-fog" aria-hidden="true"></div>
+    <div class="emoji-fleet" aria-hidden="true">
+      <span class="parallax-layer" data-depth="0.5">👽</span>
+      <span class="parallax-layer" data-depth="0.9">🛸</span>
+      <span class="parallax-layer" data-depth="0.7">👾</span>
+      <span class="parallax-layer" data-depth="1.1">🛸</span>
+      <span class="parallax-layer" data-depth="0.6">👽</span>
+      <span class="parallax-layer" data-depth="1.0">🛸</span>
+      <span class="parallax-layer" data-depth="0.8">👾</span>
+      <span class="parallax-layer" data-depth="0.5">👽</span>
+      <span class="parallax-layer" data-depth="1.2">🛸</span>
+      <span class="parallax-layer" data-depth="0.6">👽</span>
+      <span class="parallax-layer" data-depth="0.75">👾</span>
+      <span class="parallax-layer" data-depth="1.15">🛸</span>
+      <span class="parallax-layer" data-depth="0.55">👽</span>
+      <span class="parallax-layer" data-depth="1.05">🛸</span>
+      <span class="parallax-layer" data-depth="0.8">👾</span>
+      <span class="parallax-layer" data-depth="0.65">👽</span>
+      <span class="parallax-layer" data-depth="1.15">🛸</span>
+      <span class="parallax-layer" data-depth="0.5">👽</span>
+    </div>
+    <img
+      class="inside-joke parallax-layer"
+      data-depth="0.42"
+      src="{{ url_for('static', filename='image__1_-removebg-preview.webp') }}"
+      alt=""
+      aria-hidden="true"
+    />
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+    <div class="bg-shape shape-c"></div>
+
+    <main class="wrap">
+      <header class="hero">
+        <p class="kicker">ANALYSE JURIDIQUE</p>
+        <div class="brand-line">
+          <img
+            class="site-logo"
+            src="{{ url_for('static', filename='Capture_d_écran_2026-02-10_095323-removebg-preview.png') }}"
+            alt="CGUFO"
+          />
+        </div>
+        <p class="subtitle">Analyse automatique des CGU, politique de confidentialite et cookies avec score qualite utilisateur de 0 a 100.</p>
+      </header>
+
+      <section class="grid">
+        <article class="panel panel-main">
+          <h2>Analyser un site</h2>
+          <p class="panel-copy">
+            Collez un lien, l'application detecte les pages juridiques, envoie le texte a notre IA specialisee et affiche un score,
+            un resume et les points sensibles.
+          </p>
+
+          <form id="analyze-form">
+            <label for="url">URL du site</label>
+            <div class="input-row">
+              <div class="input-shell">
+                <span class="input-prefix">https://</span>
+                <input id="url" name="url" type="text" placeholder="example.com" required />
+              </div>
+              <button id="submit" type="submit">Lancer l'analyse</button>
+            </div>
+          </form>
+
+          <p id="status" class="status"></p>
+        </article>
+
+        <article class="panel panel-side">
+          <h3>Comment lire le score</h3>
+          <ul>
+            <li><strong>0-30:</strong> CGU defavorables pour l'utilisateur</li>
+            <li><strong>31-70:</strong> niveau intermediaire</li>
+            <li><strong>71-100:</strong> CGU globalement favorables</li>
+          </ul>
+          <p class="small-note">Le score est une aide a la lecture, pas un avis juridique.</p>
+        </article>
+      </section>
+
+      <section id="result" class="result hidden">
+        <article class="panel result-top">
+          <div class="score-wrap">
+            <div id="gauge" class="gauge" style="--p: 0;">
+              <div class="gauge-inner">
+                <span class="gauge-label">Score utilisateur</span>
+                <strong id="score">-</strong>
+              </div>
+            </div>
+          </div>
+          <p id="site-type" class="site-type"></p>
+          <p id="summary"></p>
+        </article>
+
+        <section class="grid two">
+          <article class="panel">
+            <h2>Risques</h2>
+            <ul id="risks"></ul>
+          </article>
+
+          <article class="panel">
+            <h2>Points favorables</h2>
+            <ul id="highlights"></ul>
+          </article>
+        </section>
+
+        <!--
+        <section class="grid two">
+          <article class="panel code-panel">
+            <h2>Prompt envoye a DeepSeek</h2>
+            <pre id="prompt"></pre>
+          </article>
+
+          <article class="panel code-panel">
+            <h2>Reponse brute du modele</h2>
+            <pre id="raw"></pre>
+          </article>
+        </section>
+        -->
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById("analyze-form");
+      const statusEl = document.getElementById("status");
+      const resultEl = document.getElementById("result");
+
+      const scoreEl = document.getElementById("score");
+      const siteTypeEl = document.getElementById("site-type");
+      const summaryEl = document.getElementById("summary");
+      const risksEl = document.getElementById("risks");
+      const highlightsEl = document.getElementById("highlights");
+      // const promptEl = document.getElementById("prompt");
+      // const rawEl = document.getElementById("raw");
+      const gaugeEl = document.getElementById("gauge");
+      const parallaxLayers = document.querySelectorAll(".parallax-layer");
+
+      function renderList(container, items) {
+        container.innerHTML = "";
+        (items || []).forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          container.appendChild(li);
+        });
+      }
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const inputUrl = document.getElementById("url").value.trim();
+        if (!inputUrl) return;
+        let url = inputUrl;
+        if (!/^https?:\/\//i.test(url)) {
+          url = `https://${url.replace(/^\/+/, "")}`;
+        }
+
+        statusEl.textContent = "Analyse en cours...";
+        resultEl.classList.add("hidden");
+
+        try {
+          const response = await fetch("/analyze", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ url }),
+          });
+
+          const data = await response.json();
+          if (!data.ok) throw new Error(data.error || "Erreur inconnue");
+
+          const score = Math.max(0, Math.min(100, Number(data.score) || 0));
+          scoreEl.textContent = score;
+          gaugeEl.style.setProperty("--p", score);
+          const siteType = data.site_type || "hybride";
+          const confidence = Math.max(0, Math.min(100, Number(data.site_type_confidence) || 50));
+          siteTypeEl.textContent = `Type de site estime: ${siteType} (confiance ${confidence}%)`;
+          summaryEl.textContent = data.summary || "";
+          renderList(risksEl, data.risks || []);
+          renderList(highlightsEl, data.highlights || []);
+          // promptEl.textContent = data.prompt || "";
+          // rawEl.textContent = data.raw_model_response || "";
+
+          resultEl.classList.remove("hidden");
+          if (data.cached) {
+            statusEl.textContent = "Analyse terminee (cache).";
+          } else {
+            statusEl.textContent = "Analyse terminee.";
+          }
+        } catch (error) {
+          statusEl.textContent = `Erreur: ${error.message}`;
+        }
+      });
+
+      let mx = 0;
+      let my = 0;
+      let px = 0;
+      let py = 0;
+
+      window.addEventListener("mousemove", (event) => {
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        mx = (event.clientX - cx) / cx;
+        my = (event.clientY - cy) / cy;
+      });
+
+      window.addEventListener("mouseleave", () => {
+        mx = 0;
+        my = 0;
+      });
+
+      function animateParallax() {
+        px += (mx - px) * 0.08;
+        py += (my - py) * 0.08;
+        const t = performance.now() / 1000;
+
+        parallaxLayers.forEach((layer, index) => {
+          const depth = Number(layer.dataset.depth || 1);
+          const sway = Math.sin(t * (0.9 + depth * 0.3) + index) * (2 + depth * 2);
+          const lift = Math.cos(t * (0.7 + depth * 0.2) + index * 0.8) * (1 + depth * 1.4);
+          const tx = px * depth * 28 + sway;
+          const ty = py * depth * 28 + lift;
+          layer.style.transform = `translate(${tx}px, ${ty}px) rotate(var(--r, 0deg))`;
+        });
+
+        requestAnimationFrame(animateParallax);
+      }
+
+      requestAnimationFrame(animateParallax);
+    </script>
+  </body>
+</html>
